@@ -46,6 +46,27 @@ async function Post({ params: { slug } }: Props) {
                                         )}
                                     </p>
               </div>
+              <div className="flex items-center space-x-2">
+              <Image className="rounded-full"
+                                src={urlFor(post.author.image).url()}
+                                alt={post.author.name}
+                  height={40}
+                  width={40}
+                />
+                <div className="w-64">
+                  <h3 className="text-lg font-bold">{ post.author.name}</h3>
+                </div>
+              </div>
+            </div>
+            <div className="">
+              <h2 className="italic pt-10">{post.description}</h2>
+              <div className="flex items-center justify-end mt-auto space-x-2">
+                {
+                  post.categories.map(category => (
+                    <p className="bg-gray-900 text-white px-3 py-1 rounded-full text-sm font-semibold mt-4">{ category.title}</p>
+                  ))
+                }
+              </div>
             </div>
           </section>
         </div>
