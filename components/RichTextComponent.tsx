@@ -16,6 +16,7 @@ export const RichTextComponent = {
                 </div>
             )
         },
+    },
         list: {
             bullet: ({ children }: any) =>( <ul className="ml-10 py-5 list-desc space-y-5">{ children}</ul>)
             ,
@@ -36,15 +37,14 @@ export const RichTextComponent = {
         },
         marks: {
             link: ({ children, value }: any) => {
-                const rel = !value.href.statsWith("/") ? 'noreferrer noopener' : undefined;
+                // const rel = !value.href.statsWith("/") ? 'noreferrer noopener' : undefined;
                 return (
                     <Link
                         href={value.href}
-                        rel={rel}
+                        // rel={rel}
                         className="underline decoration-yellow-300 hover:decoration-black"
                     >{children}</Link>
                 );
             },
         }
-    },
-}
+    }

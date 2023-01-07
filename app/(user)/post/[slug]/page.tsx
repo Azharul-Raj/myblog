@@ -23,13 +23,14 @@ async function Post({ params: { slug } }: Props) {
     }
     `
   const post: Post = await client.fetch(query, { slug });
+  console.log(post.mainImage)
   return (
     <article className="px-10 pb-28">
       <section className="space-y-2 border border-yellow-300 text-white">
         <div className="relative min-h-56 flex flex-col md:flex-row justify-between">
           <div className="absolute top-0 h-full w-full  opacity-10 blur-sm p-10">
           <Image className="object-cover object-left lg:object-center"
-                                src={urlFor(post.mainImage).url()}
+                                src={urlFor(post?.mainImage).url()}
                                 alt={post.author.name}
                                 fill
                             />
@@ -74,7 +75,6 @@ async function Post({ params: { slug } }: Props) {
         </div>
       </section>
       <div className="">
-
       <PortableText value={post.body} components={RichTextComponent} />
       </div>
     </article>
