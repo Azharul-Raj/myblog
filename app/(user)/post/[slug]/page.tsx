@@ -4,6 +4,7 @@ import { client } from "../../../../lib/sanity.client"
 import urlFor from "../../../../lib/urlFor"
 import { Post } from "../../../../typing";
 import { PortableText } from "@portabletext/react";
+import { RichTextComponent } from "../../../../components/RichTextComponent";
 
 type Props = {
     params: {
@@ -63,8 +64,8 @@ async function Post({ params: { slug } }: Props) {
               <h2 className="italic pt-10">{post.description}</h2>
               <div className="flex items-center justify-end mt-auto space-x-2">
                 {
-                  post.categories.map(category => (
-                    <p className="bg-gray-900 text-white px-3 py-1 rounded-full text-sm font-semibold mt-4">{ category.title}</p>
+                  post.categories.map((category,id) => (
+                    <p key={id} className="bg-gray-900 text-white px-3 py-1 rounded-full text-sm font-semibold mt-4">{ category.title}</p>
                   ))
                 }
               </div>
@@ -72,7 +73,10 @@ async function Post({ params: { slug } }: Props) {
           </section>
         </div>
       </section>
-      <PortableText value={post.body}/>
+      <div className="">
+
+      <PortableText value={post.body} components={RichTextComponent} />
+      </div>
     </article>
   )
     

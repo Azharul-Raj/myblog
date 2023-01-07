@@ -9,7 +9,7 @@ const Header = () => {
                 <Link href="/">
                     <Image className="rounded-full" height={80} width={50} alt="logo" src={img}/>
                 </Link>
-                <h1 className="text-2xl font-bold">RAJ'S BLOG</h1>
+                <h1 className="text-2xl font-bold">MB SoftTech</h1>
             </div>
             <div className="rounded-full items-center bg-gray-900 text-white px-5 py-3 font-semibold">
                 <Link href='/'>Sign Up</Link>
