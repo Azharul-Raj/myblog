@@ -12,6 +12,20 @@ type Props = {
     }
 }
 
+export async function generateStaticParams() {
+  const query = groq`
+  *[_type=='post']
+  {
+    slug
+  }
+  `
+  const slugs: Post[] = await client.fetch(query);
+  const slugRoutes = slugs.map(slug => slug.slug.current);
+  return slugRoutes.map(slug => ({
+    slug,
+  }))
+}
+
 async function Post({ params: { slug } }: Props) {
 
       const query = groq`
@@ -23,7 +37,6 @@ async function Post({ params: { slug } }: Props) {
     }
     `
   const post: Post = await client.fetch(query, { slug });
-  console.log(post.mainImage)
   return (
     <article className="px-10 pb-28">
       <section className="space-y-2 border border-yellow-300 text-white">
